@@ -3,7 +3,7 @@ import { ButtonFavorite } from './ButtonFavorite'
 import { ButtonCompare } from './ButtonCompare'
 
 export const PokemonItem = ({ name, index }: PokemonItemProps) => {
-  const pokemonIndex = index < 10 ? `#00${index}` : `#0${index}`
+  const pokemonIndex = Number(index) < 10 ? `#00${index}` : `#0${index}`
 
   const handleItemClick = () => {
     console.log(`${pokemonIndex} - ${name}`)

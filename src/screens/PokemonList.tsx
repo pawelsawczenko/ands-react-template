@@ -60,11 +60,7 @@ export const PokemonList = () => {
       <div className="w-xs md:w-2xl xl:w-5xl">
         <div className="flex flex-row flex-wrap justify-between">
           {pokemonItems.map((item) => (
-            <PokemonItem
-              key={`${item.index}-${item.name}`}
-              name={item.name}
-              index={Number(item.index)}
-            />
+            <PokemonItem key={`${item.index}-${item.name}`} name={item.name} index={item.index} />
           ))}
         </div>
         <PokemonPagination />
