@@ -56,7 +56,7 @@ export const PokemonList = () => {
   const pokemonItems = mockData
 
   return (
-    <div className="flex justify-center bg-sky-200 rounded-t-xl p-4">
+    <div className="flex justify-center flex-grow items-start bg-sky-200 rounded-t-xl p-4">
       <div className="w-xs md:w-2xl xl:w-5xl">
         <div className="flex flex-row flex-wrap justify-between">
           {pokemonItems.map((item) => (
