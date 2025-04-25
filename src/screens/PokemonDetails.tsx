@@ -1,8 +1,9 @@
 import { ButtonCompare } from '../components/ButtonCompare'
 import { ButtonFavorite } from '../components/ButtonFavorite'
 import { PokemonStat } from '../components/PokemonStat'
+import { PokemonData } from '../types'
 
-const mockData = {
+const mockData: PokemonData = {
   index: '7',
   name: 'squirtle',
   height: 5,
