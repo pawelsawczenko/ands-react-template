@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom'
 import { ButtonCompare } from '../components/ButtonCompare'
 import { ButtonFavorite } from '../components/ButtonFavorite'
 import { PokemonStat } from '../components/PokemonStat'
@@ -20,6 +21,9 @@ const mockData: PokemonData = {
 }
 
 export const PokemonDetails = () => {
+  const { pokemonId } = useParams()
+  console.log(`index of pokemon -> ` + pokemonId)
+
   const { index, name, height, weight, img, stats } = mockData
 
   const pokemonIndex = Number(index) < 10 ? `#00${index}` : `#0${index}`
