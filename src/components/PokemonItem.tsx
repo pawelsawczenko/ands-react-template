@@ -1,12 +1,15 @@
 import { PokemonItemProps } from '../types'
 import { ButtonFavorite } from './ButtonFavorite'
 import { ButtonCompare } from './ButtonCompare'
+import { useNavigate } from 'react-router-dom'
 
 export const PokemonItem = ({ name, index }: PokemonItemProps) => {
+  const navigate = useNavigate()
   const pokemonIndex = Number(index) < 10 ? `#00${index}` : `#0${index}`
 
   const handleItemClick = () => {
     console.log(`${pokemonIndex} - ${name}`)
+    navigate(`/details/${index}`)
   }
 
   return (

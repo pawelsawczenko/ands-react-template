@@ -59,6 +59,7 @@ export const PokemonComparisonItem = ({
 
       {comparedPokemons[pokemonToRender].stats.map((stat) => (
         <PokemonStatComparison
+          key={`${stat.name}${stat.value}`}
           stat={stat.name}
           pokemonToRenderValue={stat.value}
           comparedToValue={
