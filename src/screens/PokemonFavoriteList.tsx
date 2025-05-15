@@ -3,28 +3,32 @@ import { PokemonList } from '../components/PokemonList'
 const mockData = [
   {
     name: 'bulbasaur',
-    index: '1'
+    url: 'https://pokeapi.co/api/v2/pokemon/1/'
   },
   {
     name: 'charmander',
-    index: '4'
+    url: 'https://pokeapi.co/api/v2/pokemon/4/'
   },
   {
     name: 'charizard',
-    index: '6'
+    url: 'https://pokeapi.co/api/v2/pokemon/6/'
   },
   {
     name: 'squirtle',
-    index: '7'
+    url: 'https://pokeapi.co/api/v2/pokemon/7/'
   },
   {
     name: 'blastoise',
-    index: '9'
+    url: 'https://pokeapi.co/api/v2/pokemon/9/'
   }
 ]
 
 export const PokemonFavoriteList = () => {
   const pokemonFavItems = mockData
 
-  return <PokemonList pokemonList={pokemonFavItems} />
+  return (
+    <div className="w-xs md:w-2xl xl:w-5xl">
+      <PokemonList pokemonList={pokemonFavItems} />
+    </div>
+  )
 }
