@@ -9,7 +9,6 @@ export const PokemonItem = ({ name, index }: PokemonItemProps) => {
   const pokemonIndex = stylizeIndex(Number(index))
 
   const handleItemClick = () => {
-    console.log(`${pokemonIndex} - ${name}`)
     navigate(`/details/${index}`)
   }
 
