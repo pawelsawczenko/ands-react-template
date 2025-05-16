@@ -9,5 +9,10 @@ export interface PokemonData {
   height: number
   weight: number
   img: string
-  stats: { name: string; value: number }[]
+  stats: PokemonStatData[]
+}
+
+export interface PokemonStatData {
+  name: string
+  value: number
 }
