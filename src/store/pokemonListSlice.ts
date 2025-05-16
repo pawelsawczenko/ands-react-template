@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-
-const POKEMON_API = 'https://pokeapi.co/api/v2/pokemon/'
+import { POKEMON_API } from '../services'
 
 export interface pokemonApiList {
   name: string
