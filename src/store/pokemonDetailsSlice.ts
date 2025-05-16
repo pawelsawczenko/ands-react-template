@@ -64,7 +64,7 @@ export const pokemonDetailsSlice = createSlice({
           name: action.payload.name,
           height: action.payload.height,
           weight: action.payload.weight,
-          img: action.payload.other['official-artwork'].front_default,
+          img: action.payload.sprites.other['official-artwork'].front_default,
           stats: pokemonStats
         }
 
@@ -72,3 +72,5 @@ export const pokemonDetailsSlice = createSlice({
       })
   }
 })
+
+export default pokemonDetailsSlice.reducer
