@@ -5,7 +5,14 @@ import { useNavigate } from 'react-router-dom'
 
 export const PokemonItem = ({ name, index }: PokemonItemProps) => {
   const navigate = useNavigate()
-  const pokemonIndex = Number(index) < 10 ? `#00${index}` : `#0${index}`
+  const pokemonIndex =
+    Number(index) < 10
+      ? `#000${index}`
+      : Number(index) < 100
+        ? `#00${index}`
+        : Number(index) < 1000
+          ? `#0${index}`
+          : `#${index}`
 
   const handleItemClick = () => {
     console.log(`${pokemonIndex} - ${name}`)
