@@ -2,6 +2,7 @@ import { ButtonCompare } from '../components/ButtonCompare'
 import { ButtonFavorite } from '../components/ButtonFavorite'
 import { PokemonStat } from '../components/PokemonStat'
 import { PokemonData } from '../types'
+import { stylizeIndex } from '../utils'
 
 const mockData: PokemonData = {
   index: '7',
@@ -22,7 +23,7 @@ const mockData: PokemonData = {
 export const PokemonDetails = () => {
   const { index, name, height, weight, img, stats } = mockData
 
-  const pokemonIndex = Number(index) < 10 ? `#00${index}` : `#0${index}`
+  const pokemonIndex = stylizeIndex(Number(index))
 
   return (
     <div className="flex justify-center flex-col bg-amber-100  rounded-xl w-xs md:w-2xl">

@@ -6,7 +6,7 @@ export interface pokemonApiList {
   url: string
 }
 
-export interface PolemonListState {
+export interface PokemonListState {
   list: pokemonApiList[]
   pagination: {
     currentPage: number
@@ -18,7 +18,7 @@ export interface PolemonListState {
   error: string
 }
 
-const initialState: PolemonListState = {
+const initialState: PokemonListState = {
   list: [],
   pagination: {
     currentPage: 1,
