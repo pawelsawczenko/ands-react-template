@@ -8,7 +8,7 @@ import { Error } from '../components/Error'
 import { Spinner } from '../components/Spinner'
 
 export const PokemonMainList = () => {
-  const IsLoading = useSelector((state: RootState) => state.pokemonList.isLoading)
+  const isLoading = useSelector((state: RootState) => state.pokemonList.isLoading)
   const error = useSelector((state: RootState) => state.pokemonList.error)
   const pokemonMainItems = useSelector((state: RootState) => state.pokemonList.list)
 
@@ -20,7 +20,7 @@ export const PokemonMainList = () => {
 
   return (
     <div className="w-xs md:w-2xl xl:w-5xl">
-      {IsLoading ? (
+      {isLoading ? (
         <Spinner />
       ) : error ? (
         <Error error={error} />
