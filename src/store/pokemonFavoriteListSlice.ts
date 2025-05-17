@@ -1,11 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
-import { pokemonApiList } from './pokemonListSlice'
-import { POKEMON_API } from '../services'
+import { POKEMON_API, pokemonApiList } from '../services'
 import { PokemonItemProps } from '../types'
 import { getIndexFromUrl } from '../utils'
 
-// refactor
 export interface PokemonFavoriteListState {
   list: pokemonApiList[]
 }
