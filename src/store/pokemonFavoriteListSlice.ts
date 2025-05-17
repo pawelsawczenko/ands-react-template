@@ -3,7 +3,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { pokemonApiList } from './pokemonListSlice'
 import { POKEMON_API } from '../services'
 import { PokemonItemProps } from '../types'
+import { getIndexFromUrl } from '../utils'
 
+// refactor
 export interface PokemonFavoriteListState {
   list: pokemonApiList[]
 }
@@ -39,13 +41,14 @@ export const pokemonFavoriteListSlice = createSlice({
   reducers: {
     addFavorite: (state, action: PayloadAction<PokemonItemProps>) => {
       state.list.push({ name: action.payload.name, url: `${POKEMON_API}${action.payload.index}/` })
+      state.list.sort((a, b) => Number(getIndexFromUrl(a.url)) - Number(getIndexFromUrl(b.url)))
     },
     removeFavorite: (state, action: PayloadAction<PokemonItemProps>) => {
-      const pokemonIndex = state.list.findIndex(
-        (pokemon) => pokemon.url === `${POKEMON_API}${action.payload.index}/`
+      state.list = state.list.filter(
+        (pokemon) =>
+          pokemon.url !== `${POKEMON_API}${action.payload.index}/` &&
+          pokemon.name !== action.payload.name
       )
-      if (!pokemonIndex) return
-      state.list.slice(pokemonIndex, 1)
     }
   }
 })

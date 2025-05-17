@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { POKEMON_API } from '../services'
 
-// reafactor
+// refactor
 export interface pokemonApiList {
   name: string
   url: string

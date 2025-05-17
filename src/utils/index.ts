@@ -7,3 +7,9 @@ export const stylizeIndex = (index: number) => {
         ? `#0${index}`
         : `#${index}`
 }
+
+export const getIndexFromUrl = (url: string) => {
+  const urlArr = url.split('/')
+
+  return urlArr[urlArr.length - 2]
+}
