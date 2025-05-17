@@ -1,3 +1,4 @@
+// reafactor
 import { pokemonApiList } from '../store/pokemonListSlice'
 import { PokemonItem } from './PokemonItem'
 

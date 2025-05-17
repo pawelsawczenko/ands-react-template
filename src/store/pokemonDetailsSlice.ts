@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { PokemonData, PokemonStatData } from '../types'
 import { POKEMON_API } from '../services'
 
+// refactor
 interface pokemonApiStat {
   base_stat: number
   effort: number
