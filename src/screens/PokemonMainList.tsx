@@ -10,13 +10,15 @@ import { Spinner } from '../components/Spinner'
 export const PokemonMainList = () => {
   const isLoading = useSelector((state: RootState) => state.pokemonList.isLoading)
   const error = useSelector((state: RootState) => state.pokemonList.error)
+  const currnetPage = useSelector((state: RootState) => state.pokemonList.pagination.currentPage)
   const pokemonMainItems = useSelector((state: RootState) => state.pokemonList.list)
 
   const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
+    if (currnetPage) return
     dispatch(getInitialPokemonList())
-  }, [dispatch])
+  }, [dispatch, currnetPage])
 
   return (
     <div className="w-xs md:w-2xl xl:w-5xl">

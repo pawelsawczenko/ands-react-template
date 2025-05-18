@@ -16,7 +16,7 @@ export interface PokemonListState {
 const initialState: PokemonListState = {
   list: [],
   pagination: {
-    currentPage: 1,
+    currentPage: 0,
     pokemonsCount: 0,
     previous: null,
     next: null
@@ -57,6 +57,7 @@ export const pokemonListSlice = createSlice({
         state.pagination.pokemonsCount = action.payload.count
         state.pagination.next = action.payload.next
         state.pagination.previous = action.payload.previous
+        state.pagination.currentPage = 1
         state.isLoading = false
       })
     builder
