@@ -1,10 +1,15 @@
 import { TiDelete } from 'react-icons/ti'
 import { PokemonItemProps } from '../types'
+import { AppDispatch } from '../store/store'
+import { useDispatch } from 'react-redux'
+import { removePokemonFromComparison } from '../store/pokemonComparisonSlice'
 
-export const ButtonRemove = ({ name, index }: PokemonItemProps) => {
+export const ButtonRemove = ({ index }: PokemonItemProps) => {
+  const dispatch = useDispatch<AppDispatch>()
+
   const handleDeleteClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation()
-    console.log(`delete ${index} - ${name}`)
+    dispatch(removePokemonFromComparison(index))
   }
 
   return (

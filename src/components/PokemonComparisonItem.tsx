@@ -1,13 +1,11 @@
 import { PokemonData } from '../types'
+import { stylizeIndex } from '../utils'
 import { ButtonRemove } from './ButtonRemove'
 import { PokemonStat } from './PokemonStat'
 
 interface PokemonComparisonItemProps {
-  comparedPokemons: {
-    pokemonLeft: PokemonData
-    pokemonRight: PokemonData
-  }
-  pokemonToRender: 'pokemonLeft' | 'pokemonRight'
+  comparedPokemons: PokemonData[]
+  pokemonToRender: number
 }
 
 interface PokemonStatComparisonProps {
@@ -20,13 +18,13 @@ export const PokemonComparisonItem = ({
   comparedPokemons,
   pokemonToRender
 }: PokemonComparisonItemProps) => {
-  const comparedTo = pokemonToRender === 'pokemonLeft' ? 'pokemonRight' : 'pokemonLeft'
+  const comparedTo = pokemonToRender ? 0 : 1
 
   return (
     <div>
       <div className="flex justify-between p-2">
-        <h2 className="ml-2 text-xl md:text-3xl">
-          {comparedPokemons[pokemonToRender].index}
+        <h2 className="ml-2 text-xl md:text-2xl">
+          {stylizeIndex(Number(comparedPokemons[pokemonToRender].index))}
           {' - '}
           <span className="capitalize">{comparedPokemons[pokemonToRender].name}</span>
         </h2>
@@ -48,22 +46,22 @@ export const PokemonComparisonItem = ({
       <PokemonStatComparison
         stat="height"
         pokemonToRenderValue={comparedPokemons[pokemonToRender].height}
-        comparedToValue={comparedPokemons[comparedTo].height}
+        comparedToValue={comparedPokemons[comparedTo]?.height || 0}
       />
 
       <PokemonStatComparison
         stat="weight"
         pokemonToRenderValue={comparedPokemons[pokemonToRender].weight}
-        comparedToValue={comparedPokemons[comparedTo].weight}
+        comparedToValue={comparedPokemons[comparedTo]?.weight || 0}
       />
 
-      {comparedPokemons[pokemonToRender].stats.map((stat) => (
+      {comparedPokemons[pokemonToRender]?.stats.map((stat) => (
         <PokemonStatComparison
           key={`${stat.name}${stat.value}`}
           stat={stat.name}
           pokemonToRenderValue={stat.value}
           comparedToValue={
-            comparedPokemons[comparedTo].stats.find((item) => item.name === stat.name)?.value || 0
+            comparedPokemons[comparedTo]?.stats.find((item) => item.name === stat.name)?.value || 0
           }
         />
       ))}

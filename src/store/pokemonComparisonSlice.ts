@@ -10,39 +10,8 @@ export interface PokemonComparisonState {
 }
 
 const initialState: PokemonComparisonState = {
-  comparedPokemonsIndexes: ['4', '7'],
-  comparedPokemons: [
-    {
-      index: '4',
-      name: 'charmander',
-      height: 6,
-      weight: 85,
-      img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png',
-      stats: [
-        { name: 'hp', value: 39 },
-        { name: 'attack', value: 52 },
-        { name: 'defense', value: 43 },
-        { name: 'special-attack', value: 60 },
-        { name: 'special-defense', value: 50 },
-        { name: 'speed', value: 65 }
-      ]
-    },
-    {
-      index: '7',
-      name: 'squirtle',
-      height: 5,
-      weight: 90,
-      img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png',
-      stats: [
-        { name: 'hp', value: 44 },
-        { name: 'attack', value: 48 },
-        { name: 'defense', value: 65 },
-        { name: 'special-attack', value: 50 },
-        { name: 'special-defense', value: 64 },
-        { name: 'speed', value: 43 }
-      ]
-    }
-  ],
+  comparedPokemonsIndexes: ['25'],
+  comparedPokemons: [],
   isLoading: false,
   error: ''
 }
@@ -61,7 +30,7 @@ export const getPokemonComparisonDetails = createAsyncThunk(
         })
 
         return {
-          index: pokemonData.id,
+          index: String(pokemonData.id),
           name: pokemonData.name,
           height: pokemonData.height,
           weight: pokemonData.weight,
@@ -84,8 +53,12 @@ export const pokemonComparisonSlice = createSlice({
         state.comparedPokemonsIndexes.push(action.payload)
     },
     removePokemonFromComparison: (state, action: PayloadAction<string>) => {
-      state.comparedPokemonsIndexes.filter((index) => index != action.payload)
-      state.comparedPokemons.filter((pokemon) => pokemon.index != action.payload)
+      state.comparedPokemonsIndexes = state.comparedPokemonsIndexes.filter(
+        (index) => index !== action.payload
+      )
+      state.comparedPokemons = state.comparedPokemons.filter(
+        (pokemon) => pokemon.index !== action.payload
+      )
     }
   },
   extraReducers(builder) {
@@ -101,8 +74,8 @@ export const pokemonComparisonSlice = createSlice({
       })
       .addCase(getPokemonComparisonDetails.fulfilled, (state, action) => {
         state.comparedPokemons = []
-
         action.payload.forEach((pokemonDetails) => state.comparedPokemons.push(pokemonDetails))
+        state.isLoading = false
       })
   }
 })
