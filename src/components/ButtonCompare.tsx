@@ -6,6 +6,7 @@ import {
   addPokemonToComparison,
   removePokemonFromComparison
 } from '../store/pokemonComparisonSlice'
+import toast from 'react-hot-toast'
 
 export const ButtonCompare = ({ name, index }: PokemonItemProps) => {
   const comparedPokemonsIndexes = useSelector(
@@ -21,7 +22,12 @@ export const ButtonCompare = ({ name, index }: PokemonItemProps) => {
     e.stopPropagation()
     if (isInComparison) dispatch(removePokemonFromComparison(index))
     if (!isComparisonFull && !isInComparison) dispatch(addPokemonToComparison(index))
-    if (isComparisonFull && !isInComparison) console.log('error. comparison is full')
+    if (isComparisonFull && !isInComparison)
+      toast.error(
+        `Can't add ${
+          name.charAt(0).toUpperCase() + name.slice(1)
+        } to comparison. The comparison section is full.`
+      )
   }
 
   return (
