@@ -14,7 +14,7 @@ export const PokemonItem = ({ name, index }: PokemonItemProps) => {
 
   return (
     <div
-      className="w-xs relative mb-4 bg-amber-100 shadow-sm transition hover:bg-amber-200 hover:shadow-xl cursor-pointer"
+      className="w-xs relative bg-amber-100 shadow-sm transition hover:bg-amber-200 hover:shadow-xl cursor-pointer"
       onClick={handleItemClick}>
       <div className="flex justify-end p-2">
         <ButtonFavorite name={name} index={index} />

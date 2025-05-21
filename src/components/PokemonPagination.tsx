@@ -24,14 +24,20 @@ export const PokemonPagination = () => {
   }
 
   return (
-    <div className="flex justify-center bg-amber-600 ">
-      <button onClick={handlePrevClick} disabled={!previousPageUrl}>
+    <div className="flex justify-center">
+      <button
+        className={`p-2 transition ${!previousPageUrl ? 'bg-gray-200' : 'bg-amber-200 hover:bg-amber-400'}`}
+        onClick={handlePrevClick}
+        disabled={!previousPageUrl}>
         Prev
       </button>
-      <p className="m-2">
+      <p className="p-2 ml-2 mr-2 bg-amber-100">
         {currentPage} &#47; <span>{pagesAmount}</span>
       </p>
-      <button onClick={handleNextClick} disabled={!nextPageUrl}>
+      <button
+        className={`p-2 transition ${!nextPageUrl ? 'bg-gray-200' : 'bg-amber-200 hover:bg-amber-400'}`}
+        onClick={handleNextClick}
+        disabled={!nextPageUrl}>
         Next
       </button>
     </div>

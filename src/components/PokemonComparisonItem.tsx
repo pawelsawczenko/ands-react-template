@@ -21,7 +21,7 @@ export const PokemonComparisonItem = ({
   const comparedTo = pokemonToRender ? 0 : 1
 
   return (
-    <div>
+    <div className="bg-amber-100 rounded-xl">
       <div className="flex justify-between p-2">
         <h2 className="ml-2 text-xl md:text-2xl">
           {stylizeIndex(Number(comparedPokemons[pokemonToRender].index))}
@@ -78,7 +78,7 @@ const PokemonStatComparison = ({
 
   return (
     <div
-      className={`grid grid-cols-1 ${isGreater ? 'bg-green-200' : 'bg-amber-200'} rounded-xl mb-4 p-2 md:shadow-sm`}>
+      className={`grid grid-cols-1 ${isGreater ? 'bg-green-200' : 'bg-amber-200'} rounded-xl ml-1 mr-1 mb-4 p-2 md:ml-4 md:mr-4 md:shadow-sm`}>
       <PokemonStat name={stat} value={pokemonToRenderValue} />
     </div>
   )

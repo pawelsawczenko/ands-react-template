@@ -5,6 +5,7 @@ import { Error } from '../components/Error'
 import { Spinner } from '../components/Spinner'
 import { useEffect } from 'react'
 import { getPokemonComparisonDetails } from '../store/pokemonComparisonSlice'
+import { EmptySection } from '../components/EmptySection'
 
 export const PokemonComparison = () => {
   const isLoading = useSelector((state: RootState) => state.pokemonComparison.isLoading)
@@ -27,29 +28,21 @@ export const PokemonComparison = () => {
   return (
     <>
       {isLoading ? (
-        <div className="w-xs md:w-2xl xl:w-5xl">
-          <Spinner />
-        </div>
+        <Spinner />
       ) : error ? (
-        <div className="w-xs md:w-2xl xl:w-5xl">
-          <Error error={error} />
+        <Error error={error} />
+      ) : comparedPokemons.length < 3 && comparedPokemons.length !== 0 ? (
+        <div className="flex justify-around w-xs md:w-2xl">
+          {comparedPokemons.map((_, index) => (
+            <PokemonComparisonItem
+              key={`${comparedPokemons[index].index}-${comparedPokemons[index].name}`}
+              comparedPokemons={comparedPokemons}
+              pokemonToRender={index}
+            />
+          ))}
         </div>
       ) : (
-        <div className="grid grid-cols-2 bg-amber-100  rounded-xl w-xs md:w-2xl">
-          {comparedPokemons.length < 3 && comparedPokemons.length !== 0 ? (
-            comparedPokemons.map((_, index) => (
-              <PokemonComparisonItem
-                key={`${comparedPokemons[index].index}-${comparedPokemons[index].name}`}
-                comparedPokemons={comparedPokemons}
-                pokemonToRender={index}
-              />
-            ))
-          ) : (
-            <div className="flex justify-around w-xs p-2">
-              <p>Try add more pokemons to comparison</p>
-            </div>
-          )}
-        </div>
+        <EmptySection message={'Please add more Pokémons to comparison'} />
       )}
     </>
   )

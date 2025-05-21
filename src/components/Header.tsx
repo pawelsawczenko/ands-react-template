@@ -18,7 +18,7 @@ export const Header = () => {
   return (
     <header className="flex justify-between pt-8 pb-8 pr-4 pl-4 md:p-10">
       <button className={hoverStyles} onClick={handleLogoClick}>
-        <h1>React_Pokemon</h1>
+        <h1>React_Pok&eacute;mon</h1>
       </button>
       <div>
         <NavLink
