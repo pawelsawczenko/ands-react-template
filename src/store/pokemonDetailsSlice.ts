@@ -1,15 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { PokemonData, PokemonStatData } from '../types'
-import { POKEMON_API } from '../services'
-
-interface pokemonApiStat {
-  base_stat: number
-  effort: number
-  stat: {
-    name: string
-    url: string
-  }
-}
+import { POKEMON_API, pokemonApiStat } from '../services'
 
 export interface PokemonDetailsState {
   details: PokemonData
