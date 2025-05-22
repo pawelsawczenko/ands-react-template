@@ -14,6 +14,7 @@ import {
   REGISTER,
   REHYDRATE
 } from 'redux-persist'
+import { pokemonListApi } from '../services'
 
 const persistConfig = {
   key: 'reactPokemon',
@@ -26,7 +27,8 @@ const RootReducer = combineReducers({
   pokemonList: pokemonListReducer,
   pokemonDetails: pokemonDetailsReducer,
   pokemonFavoriteList: pokemonFavoriteListReducer,
-  pokemonComparison: pokemonComparisonReducer
+  pokemonComparison: pokemonComparisonReducer,
+  [pokemonListApi.reducerPath]: pokemonListApi.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig, RootReducer)
@@ -38,7 +40,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
       }
-    })
+    }).concat(pokemonListApi.middleware)
 })
 
 export const persistor = persistStore(store)
