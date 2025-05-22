@@ -3,6 +3,7 @@ import { PokemonItemProps } from '../types'
 import { AppDispatch } from '../store/store'
 import { useDispatch } from 'react-redux'
 import { removePokemonFromComparison } from '../store/pokemonComparisonSlice'
+import { AnimationHoverWrapper } from './AnimationHoverWrapper'
 
 export const ButtonRemove = ({ index }: PokemonItemProps) => {
   const dispatch = useDispatch<AppDispatch>()
@@ -13,8 +14,10 @@ export const ButtonRemove = ({ index }: PokemonItemProps) => {
   }
 
   return (
-    <button className="mr-2 transition hover:text-red-700" onClick={(e) => handleDeleteClick(e)}>
-      <TiDelete />
-    </button>
+    <AnimationHoverWrapper>
+      <button className="mr-2 transition hover:text-red-700" onClick={(e) => handleDeleteClick(e)}>
+        <TiDelete />
+      </button>
+    </AnimationHoverWrapper>
   )
 }

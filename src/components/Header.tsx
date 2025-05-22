@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { AppDispatch } from '../store/store'
 import { getInitialPokemonList } from '../store/pokemonListSlice'
+import { AnimationHoverWrapper } from './AnimationHoverWrapper'
 
 export const Header = () => {
   const hoverStyles = `transition hover:bg-amber-400 hover:shadow-xl`
@@ -17,9 +18,11 @@ export const Header = () => {
 
   return (
     <header className="flex justify-between pt-8 pb-8 pr-4 pl-4 md:p-10">
-      <button className={hoverStyles} onClick={handleLogoClick}>
-        <h1>React_Pok&eacute;mon</h1>
-      </button>
+      <AnimationHoverWrapper>
+        <button className={hoverStyles} onClick={handleLogoClick}>
+          <h1>React_Pok&eacute;mon</h1>
+        </button>
+      </AnimationHoverWrapper>
       <div>
         <NavLink
           to="/favorites"

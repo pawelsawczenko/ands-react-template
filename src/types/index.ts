@@ -1,3 +1,9 @@
+import { ReactNode } from 'react'
+
+export interface ChildrenProps {
+  children: ReactNode
+}
+
 export interface PokemonItemProps {
   name: string
   index: string
