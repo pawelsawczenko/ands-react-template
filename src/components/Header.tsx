@@ -1,13 +1,25 @@
-import { NavLink } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { AppDispatch } from '../store/store'
+import { getInitialPokemonList } from '../store/pokemonListSlice'
 
 export const Header = () => {
-  const navLinkStyles = `pt-2 pb-2 transition hover:bg-amber-400 hover:shadow-xl`
+  const hoverStyles = `transition hover:bg-amber-400 hover:shadow-xl`
+  const navLinkStyles = `pt-2 pb-2 ${hoverStyles}`
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch<AppDispatch>()
+
+  const handleLogoClick = () => {
+    dispatch(getInitialPokemonList())
+    navigate('/')
+  }
 
   return (
     <header className="flex justify-between pt-8 pb-8 pr-4 pl-4 md:p-10">
-      <NavLink to="/">
-        <h1>React_Pokemon</h1>
-      </NavLink>
+      <button className={hoverStyles} onClick={handleLogoClick}>
+        <h1>React_Pok&eacute;mon</h1>
+      </button>
       <div>
         <NavLink
           to="/favorites"

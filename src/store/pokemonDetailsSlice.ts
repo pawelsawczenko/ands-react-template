@@ -51,7 +51,7 @@ export const pokemonDetailsSlice = createSlice({
         })
 
         state.details = {
-          index: action.payload.id,
+          index: String(action.payload.id),
           name: action.payload.name,
           height: action.payload.height,
           weight: action.payload.weight,
