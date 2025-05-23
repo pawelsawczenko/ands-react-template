@@ -35,7 +35,7 @@ export const PokemonDetails = () => {
     <Error error={error} />
   ) : (
     <AnimationEnterWrapper>
-      <div className="flex justify-center flex-col bg-amber-100  rounded-xl w-xs md:w-2xl">
+      <div className="flex justify-center flex-col bg-amber-100  rounded-xl w-xs md:w-2xl md:shadow-sm">
         <div className="flex justify-between p-2">
           <h2 className="ml-2 text-xl md:text-3xl">
             {pokemonIndex}

@@ -23,7 +23,7 @@ export const PokemonComparisonItem = ({
 
   return (
     <AnimationEnterWrapper>
-      <div className="bg-amber-100 rounded-xl">
+      <div className="bg-amber-100 rounded-xl pb-1 md:shadow-sm">
         <div className="flex justify-between p-2">
           <h2 className="ml-2 text-xl md:text-2xl">
             {stylizeIndex(Number(comparedPokemons[pokemonToRender].index))}

@@ -26,7 +26,7 @@ export const PokemonItem = ({ name, index }: PokemonItemProps) => {
 
             <ButtonCompare name={name} index={index} />
           </div>
-          <div className="absolute top-0 left-28">
+          <div className="absolute w-24 top-1 left-28">
             <img
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`}
               alt={name}
