@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { AppDispatch } from '../store/store'
 import { getInitialPokemonList } from '../store/pokemonListSlice'
 import { AnimationHoverWrapper } from './AnimationHoverWrapper'
+import pokeball from '../assets/pokeball.svg'
 
 export const Header = () => {
   const hoverStyles = `transition hover:bg-amber-400 hover:shadow-xl`
@@ -22,7 +23,7 @@ export const Header = () => {
         <button className={hoverStyles} onClick={handleLogoClick}>
           <h1>
             React
-            <img className="inline-block w-4 mb-1 ml-1 mr-1" src="pokeball.svg" alt="pokeball" />
+            <img className="inline-block w-4 mb-1 ml-1 mr-1" src={pokeball} alt="pokeball" />
             Pok&eacute;mon
           </h1>
         </button>
