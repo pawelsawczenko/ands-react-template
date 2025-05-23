@@ -1,7 +1,6 @@
 import { motion } from 'motion/react'
-import { ChildrenProps } from '../types'
 
-export const AnimationEnterWrapper = ({ children }: ChildrenProps) => {
+export const AnimationEnterWrapper = ({ children }: React.PropsWithChildren) => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       {children}

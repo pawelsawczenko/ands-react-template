@@ -6,7 +6,6 @@ import { Spinner } from '../components/Spinner'
 import { useEffect } from 'react'
 import { getPokemonComparisonDetails } from '../store/pokemonComparisonSlice'
 import { EmptySection } from '../components/EmptySection'
-import { AnimationEnterWrapper } from '../components/AnimationEnterWrapper'
 
 export const PokemonComparison = () => {
   const isLoading = useSelector((state: RootState) => state.pokemonComparison.isLoading)
@@ -33,17 +32,15 @@ export const PokemonComparison = () => {
       ) : error ? (
         <Error error={error} />
       ) : comparedPokemons.length < 3 && comparedPokemons.length !== 0 ? (
-        <AnimationEnterWrapper>
-          <div className="flex justify-around w-xs md:w-2xl">
-            {comparedPokemons.map((_, index) => (
-              <PokemonComparisonItem
-                key={`${comparedPokemons[index].index}-${comparedPokemons[index].name}`}
-                comparedPokemons={comparedPokemons}
-                pokemonToRender={index}
-              />
-            ))}
-          </div>
-        </AnimationEnterWrapper>
+        <div className="flex justify-around w-xs md:w-2xl">
+          {comparedPokemons.map((_, index) => (
+            <PokemonComparisonItem
+              key={`${comparedPokemons[index].index}-${comparedPokemons[index].name}`}
+              comparedPokemons={comparedPokemons}
+              pokemonToRender={index}
+            />
+          ))}
+        </div>
       ) : (
         <EmptySection message={'Please add more Pokémons to comparison'} />
       )}

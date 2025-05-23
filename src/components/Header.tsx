@@ -24,20 +24,28 @@ export const Header = () => {
         </button>
       </AnimationHoverWrapper>
       <div>
-        <NavLink
-          to="/favorites"
-          className={({ isActive }) =>
-            `${isActive ? 'bg-amber-400' : 'bg-amber-200'} mr-3 ${navLinkStyles}`
-          }>
-          Favorites
-        </NavLink>
-        <NavLink
-          to="/comparison"
-          className={({ isActive }) =>
-            `${isActive ? 'bg-amber-400' : 'bg-amber-200'} ${navLinkStyles}`
-          }>
-          Comparison
-        </NavLink>
+        <div className="inline-block">
+          <AnimationHoverWrapper>
+            <NavLink
+              to="/favorites"
+              className={({ isActive }) =>
+                `${isActive ? 'bg-amber-400' : 'bg-amber-200'} mr-3 ${navLinkStyles}`
+              }>
+              Favorites
+            </NavLink>
+          </AnimationHoverWrapper>
+        </div>
+        <div className="inline-block">
+          <AnimationHoverWrapper>
+            <NavLink
+              to="/comparison"
+              className={({ isActive }) =>
+                `${isActive ? 'bg-amber-400' : 'bg-amber-200'} ${navLinkStyles}`
+              }>
+              Comparison
+            </NavLink>
+          </AnimationHoverWrapper>
+        </div>
       </div>
     </header>
   )

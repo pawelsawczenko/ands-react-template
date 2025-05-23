@@ -1,9 +1,19 @@
 import { motion } from 'motion/react'
-import { ChildrenProps } from '../types'
 
-export const AnimationHoverWrapper = ({ children }: ChildrenProps) => {
+interface AnimationHoverWrapperProps extends React.PropsWithChildren {
+  isActive?: boolean
+  isTapable?: boolean
+}
+
+export const AnimationHoverWrapper = ({
+  isActive = true,
+  isTapable = true,
+  children
+}: AnimationHoverWrapperProps) => {
   return (
-    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+    <motion.div
+      whileHover={isActive ? { scale: 1.1 } : undefined}
+      whileTap={isActive && isTapable ? { scale: 0.9 } : undefined}>
       {children}
     </motion.div>
   )
