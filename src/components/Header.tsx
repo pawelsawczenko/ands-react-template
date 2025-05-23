@@ -20,7 +20,11 @@ export const Header = () => {
     <header className="flex justify-between pt-8 pb-8 pr-4 pl-4 md:p-10">
       <AnimationHoverWrapper>
         <button className={hoverStyles} onClick={handleLogoClick}>
-          <h1>React_Pok&eacute;mon</h1>
+          <h1>
+            React
+            <img className="inline-block w-4 mb-1 ml-1 mr-1" src="pokeball.svg" alt="pokeball" />
+            Pok&eacute;mon
+          </h1>
         </button>
       </AnimationHoverWrapper>
       <div>
