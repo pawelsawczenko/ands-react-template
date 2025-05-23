@@ -41,7 +41,17 @@ export const getPokemonListPage = createAsyncThunk(
 export const pokemonListSlice = createSlice({
   name: 'pokemonList',
   initialState,
-  reducers: {},
+  reducers: {
+    setInitialPage(state, action) {
+      state.isLoading = true
+      state.list = action.payload.results
+      state.pagination.pokemonsCount = action.payload.count
+      state.pagination.next = action.payload.next
+      state.pagination.previous = action.payload.previous
+      state.pagination.currentPage = 1
+      state.isLoading = false
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(getInitialPokemonList.pending, (state) => {
@@ -82,5 +92,7 @@ export const pokemonListSlice = createSlice({
       })
   }
 })
+
+export const { setInitialPage } = pokemonListSlice.actions
 
 export default pokemonListSlice.reducer

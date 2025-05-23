@@ -7,6 +7,7 @@ import {
   removePokemonFromComparison
 } from '../store/pokemonComparisonSlice'
 import toast from 'react-hot-toast'
+import { AnimationHoverWrapper } from './AnimationHoverWrapper'
 
 export const ButtonCompare = ({ name, index }: PokemonItemProps) => {
   const comparedPokemonsIndexes = useSelector(
@@ -31,10 +32,12 @@ export const ButtonCompare = ({ name, index }: PokemonItemProps) => {
   }
 
   return (
-    <button
-      className={`mr-2 transition ${isInComparison ? 'text-blue-500' : isComparisonFull ? 'text-gray-300' : ''} hover:text-blue-700`}
-      onClick={(e) => handleCompareClick(e)}>
-      <FaBalanceScaleRight />
-    </button>
+    <AnimationHoverWrapper>
+      <button
+        className={`mr-2 transition ${isInComparison ? 'text-blue-500' : isComparisonFull ? 'text-gray-300' : ''} hover:text-blue-700`}
+        onClick={(e) => handleCompareClick(e)}>
+        <FaBalanceScaleRight />
+      </button>
+    </AnimationHoverWrapper>
   )
 }

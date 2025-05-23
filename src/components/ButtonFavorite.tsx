@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../store/store'
 import { POKEMON_API } from '../services'
 import { addFavorite, removeFavorite } from '../store/pokemonFavoriteListSlice'
+import { AnimationHoverWrapper } from './AnimationHoverWrapper'
 
 export const ButtonFavorite = ({ name, index }: PokemonItemProps) => {
   const pokemonFavItems = useSelector((state: RootState) => state.pokemonFavoriteList.list)
@@ -19,10 +20,12 @@ export const ButtonFavorite = ({ name, index }: PokemonItemProps) => {
     if (!isFavorite) dispatch(addFavorite({ name, index }))
   }
   return (
-    <button
-      className={`mr-2 transition ${isFavorite ? 'text-red-500' : ''}  hover:text-red-800`}
-      onClick={(e) => handleFavClick(e)}>
-      {isFavorite ? <FaStar /> : <FaRegStar />}
-    </button>
+    <AnimationHoverWrapper>
+      <button
+        className={`mr-2 transition ${isFavorite ? 'text-red-500' : ''}  hover:text-red-800`}
+        onClick={(e) => handleFavClick(e)}>
+        {isFavorite ? <FaStar /> : <FaRegStar />}
+      </button>
+    </AnimationHoverWrapper>
   )
 }

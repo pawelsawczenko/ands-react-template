@@ -1,29 +1,32 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { PokemonList } from '../components/PokemonList'
 import { AppDispatch, RootState } from '../store/store'
-import { getInitialPokemonList } from '../store/pokemonListSlice'
+import { setInitialPage } from '../store/pokemonListSlice'
 import { useEffect } from 'react'
 import { PokemonPagination } from '../components/PokemonPagination'
 import { Error } from '../components/Error'
 import { Spinner } from '../components/Spinner'
+import { useGetPokemonInitialListQuery } from '../services'
 
 export const PokemonMainList = () => {
-  const isLoading = useSelector((state: RootState) => state.pokemonList.isLoading)
-  const error = useSelector((state: RootState) => state.pokemonList.error)
+  const isLoadingState = useSelector((state: RootState) => state.pokemonList.isLoading)
+  const errorState = useSelector((state: RootState) => state.pokemonList.error)
   const currnetPage = useSelector((state: RootState) => state.pokemonList.pagination.currentPage)
   const pokemonMainItems = useSelector((state: RootState) => state.pokemonList.list)
+
+  const { data, isSuccess, isLoading, isError } = useGetPokemonInitialListQuery()
 
   const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
     if (currnetPage) return
-    dispatch(getInitialPokemonList())
-  }, [dispatch, currnetPage])
+    if (isSuccess && data) dispatch(setInitialPage(data))
+  }, [dispatch, currnetPage, data, isSuccess])
 
-  return isLoading ? (
+  return isLoading || isLoadingState ? (
     <Spinner />
-  ) : error ? (
-    <Error error={error} />
+  ) : isError || errorState ? (
+    <Error error={errorState || 'Something went wrong when fething page'} />
   ) : (
     <div className="w-xs md:w-2xl xl:w-5xl">
       <PokemonList pokemonList={pokemonMainItems} />
